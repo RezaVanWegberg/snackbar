@@ -38,8 +38,10 @@ kroketbrood = 0
 kroket = 0
 
 a = True
+b = True
 
 while a == True:
+    b = True
     HoeveelPat = int(input("Hoeveel patat? :"))
     patat += HoeveelPat
     if HoeveelPat > 0:
@@ -78,11 +80,14 @@ while a == True:
             else:
                 print()
     
-    Herhaling = input("nog meer bestellen? [Y] of [N]:")
-    if Herhaling in ListY:
-        a = True
-    else:
-        a = False
+    while b == True:
+        Herhaling = input("nog meer bestellen? [Y] of [N]:")
+        if Herhaling in ListY:
+            a = True
+            b = False
+        elif Herhaling in ListN:
+            a = False
+            b = False
     
 
         
