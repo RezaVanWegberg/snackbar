@@ -1,15 +1,33 @@
 from functools import total_ordering
 from lib2to3.pygram import pattern_grammar
 
+PrijsPatat = 2.40
+
+PrijsGewone = 0.95
+PrijsVega = 1.23
+PrijsXXL = 2.10
+
+PrijsKroket = 0.85
+PrijsKetchup = 0.23
+PrijsMayo = 0.19
+
+
 Ketchup = ["K", "k", "Ketchup", "ketchup", "KETCHUP"]
 Mayo = ["M", "m", "Mayo", "mayo", "MAYO"]
+ListXXL = ["X", "x", "XXL", "Xxl"]
+ListVega = ["V", "v", "Vega", "VEGA"]
+ListGewone = ["G", "g", "Gewone", "GEWONE"]
 KetchupCounter = 0
 MayoCounter = 0
+
+gewone = 0
+vega = 0
+Xxl = 0
 
 HoeveelPat = int(input("Hoeveel patat? :"))
 if HoeveelPat > 0:
     for x in range(HoeveelPat):
-        WelkeSaus = input("Wat voor saus wil je? [Ketchup] of [Mayo] of [Geen]:")
+        WelkeSaus = input("Wat voor saus wil je? [Ketchup] of [Mayo] of [Geen] :")
         if WelkeSaus in Ketchup:
             KetchupCounter += 1
         elif WelkeSaus in Mayo:
@@ -19,30 +37,56 @@ if HoeveelPat > 0:
 
 
 HoeveelFri = int(input("Hoeveel frikandellen? :"))
+if HoeveelFri > 0:
+    for y in range(HoeveelFri):
+        WelkeSoortFri = input("welke soort frikandel: [gewone], [vega] of [XXL]? :")
+        if WelkeSoortFri in ListGewone:
+            gewone += 1
+        elif WelkeSoortFri in ListVega:
+            vega += 1
+        elif WelkeSoortFri in ListXXL:
+            Xxl += 1
+        else:
+            print()
+
+
 HoeveelKro = int(input("Hoeveel kroketten? :"))
 
-PrijsKet = KetchupCounter * 0.23
-PrijsMay = MayoCounter * 0.19
+TotaalKet = KetchupCounter * PrijsKetchup
+TotaalMay = MayoCounter * PrijsMayo
+TotaalPat = HoeveelPat * PrijsPatat
 
-PrijsPat = HoeveelPat * 1.20
-PrijsFri = HoeveelFri * 0.95
-PrijsKro = HoeveelKro * 0.85
-TotaleKosten = PrijsPat + PrijsFri + PrijsKro + PrijsKet + PrijsMay 
+TotaalGew = gewone * PrijsGewone
+TotaalVeg = vega * PrijsVega
+TotaalXXL = Xxl * PrijsXXL
+
+TotaalKro = HoeveelKro * PrijsKroket
+TotaleKosten = TotaalPat + TotaalGew + TotaalVeg + TotaalXXL + TotaalKro + TotaalKet + TotaalMay 
 BestelKosten = 1.35
 
 def Bonnetje():
     if HoeveelPat > 0:
-        print(f"Patat = {HoeveelPat} x 1.20 = €{PrijsPat:.2f}")
-    if HoeveelFri > 0:
-        print(f"Frikandel {HoeveelFri} x 0.95 = €{PrijsFri:.2f}")
+        print(f"Patat = {HoeveelPat} x {PrijsPatat} = €{TotaalPat:.2f}")
+
+
+    if gewone > 0:
+        print(f"Gewone Frikandel = {gewone} x {PrijsGewone} = €{TotaalGew:.2f}")
+    if vega > 0:
+        print(f"Vega Frikandel = {vega} x {PrijsVega} = €{TotaalVeg:.2f}")
+    if Xxl > 0:
+        print(f"XXL Frikandel = {Xxl} x {PrijsXXL} = {TotaalXXL:.2f}")
+
+
     if HoeveelKro > 0:
-        print(f"Kroket = {HoeveelKro} x 0.85 = €{PrijsKro:.2f}")
+        print(f"Kroket = {HoeveelKro} x {PrijsKroket} = €{TotaalKro:.2f}")
+
 
     if KetchupCounter > 0:
-        print(f"Ketchup = {KetchupCounter} x 0.23 = €{PrijsKet:.2f}")
+        print(f"Ketchup = {KetchupCounter} x 0.23 = €{TotaalKet:.2f}")
     if MayoCounter > 0:
-        print(f"Mayo = {MayoCounter} x 0.19 = €{PrijsMay:.2f}")
-    
+        print(f"Mayo = {MayoCounter} x 0.19 = €{TotaalMay:.2f}")
+
+
     if TotaleKosten < 10:
         TotaleKosten + BestelKosten
         print(f"Bestelkosten = {BestelKosten}")
