@@ -1,3 +1,4 @@
+from functools import total_ordering
 from lib2to3.pygram import pattern_grammar
 
 
@@ -21,6 +22,11 @@ def Bonnetje():
     if TotaleKosten < 10:
         TotaleKosten + BestelKosten
         print(f"Bestelkosten = {BestelKosten}")
-    print(f"Totaal = €{TotaleKosten}")
+        print(f"Totaal = €{TotaleKosten}")
+    elif TotaleKosten > 40:
+        print(f"5% korting = {TotaleKosten * 0.05:.2f}")
+        print(f"Totaal = €{TotaleKosten * 0.95:.2f}" )
+    elif TotaleKosten >= 10 and TotaleKosten <= 40:
+        print(f"Totaal = €{TotaleKosten}")
 
 Bonnetje()
