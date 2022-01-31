@@ -8,6 +8,8 @@ HoeveelKro = int(input("Hoeveel kroketten? :"))
 PrijsPat = HoeveelPat * 1.20
 PrijsFri = HoeveelFri * 0.95
 PrijsKro = HoeveelKro * 0.85
+TotaleKosten = PrijsPat + PrijsFri + PrijsKro
+BestelKosten = 1.35
 
 def Bonnetje():
     if HoeveelPat > 0:
@@ -16,5 +18,9 @@ def Bonnetje():
         print(f"Frikandel = €{PrijsFri:.2f}")
     if HoeveelKro > 0:
         print(f"Kroket = €{PrijsKro:.2f}")
-    
+    if TotaleKosten > 10:
+        TotaleKosten + BestelKosten
+        print(f"Bestelkosten = {BestelKosten}")
+    print(f"Totaal = €{TotaleKosten}")
+
 Bonnetje()
