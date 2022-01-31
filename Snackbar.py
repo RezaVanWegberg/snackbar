@@ -18,7 +18,7 @@ def Bonnetje():
         print(f"Frikandel = €{PrijsFri:.2f}")
     if HoeveelKro > 0:
         print(f"Kroket = €{PrijsKro:.2f}")
-    if TotaleKosten > 10:
+    if TotaleKosten < 10:
         TotaleKosten + BestelKosten
         print(f"Bestelkosten = {BestelKosten}")
     print(f"Totaal = €{TotaleKosten}")
