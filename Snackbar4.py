@@ -89,7 +89,8 @@ while a == True:
     HoeveelPat = int(input("Hoeveel patat? :"))
     patat += HoeveelPat
     if HoeveelPat > 0:
-        VraagSaus()
+        for p in range(HoeveelPat):
+            VraagSaus()
 
 
     HoeveelFri = int(input("Hoeveel frikandellen? :"))
@@ -169,7 +170,7 @@ def Bonnetje():
 
     if Bittergarnituur > 0:
         print(f"Bittergarnituur = {Bittergarnituur} x {BittergarnituurPrijs:.2f} = €{TotaalBittergarnituur:.2f}")
-
+        print(f"Dit zijn de items: {ListBitterGekregen}")
 
     if KetchupCounter > 0:
         print(f"Ketchup = {KetchupCounter} x 0.23 = €{TotaalKet:.2f}")
