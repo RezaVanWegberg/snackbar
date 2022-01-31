@@ -22,11 +22,14 @@ def Bonnetje():
     if TotaleKosten < 10:
         TotaleKosten + BestelKosten
         print(f"Bestelkosten = {BestelKosten}")
-        print(f"Totaal = €{TotaleKosten}")
-    elif TotaleKosten > 40:
+        print(f"Totaal = €{TotaleKosten + BestelKosten:.2f}")
+    elif TotaleKosten > 40 and TotaleKosten <= 100:
         print(f"5% korting = {TotaleKosten * 0.05:.2f}")
         print(f"Totaal = €{TotaleKosten * 0.95:.2f}" )
     elif TotaleKosten >= 10 and TotaleKosten <= 40:
         print(f"Totaal = €{TotaleKosten}")
+    elif TotaleKosten > 100:
+        print(f"7% korting = {TotaleKosten * 0.075:.2f}")
+        print(f"Totaal = €{TotaleKosten * 0.925:.2f}")
 
 Bonnetje()
