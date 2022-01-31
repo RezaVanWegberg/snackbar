@@ -39,13 +39,19 @@ def VraagSaus():
         InputSaus = input("Welke saus wil je? [Ketchup] of [Mayo] of [geen]:")
         if InputSaus in Ketchup:
             KetchupCounter += 1
+            print()
             break
         elif InputSaus in Mayo:
             MayoCounter += 1
+            print()
             break
         elif InputSaus == "geen":
+            print()
             break       
 
+def BerekenBTW():
+    btw = TotaleKosten * 0.06
+    print(btw)
 
 a = True
 b = True
