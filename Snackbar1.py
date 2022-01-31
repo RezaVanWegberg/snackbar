@@ -8,6 +8,7 @@ PrijsVega = 1.23
 PrijsXXL = 2.10
 
 PrijsKroket = 0.85
+PrijsKroketBrood = 1.28
 PrijsKetchup = 0.23
 PrijsMayo = 0.19
 
@@ -15,14 +16,19 @@ PrijsMayo = 0.19
 Ketchup = ["K", "k", "Ketchup", "ketchup", "KETCHUP"]
 Mayo = ["M", "m", "Mayo", "mayo", "MAYO"]
 ListXXL = ["X", "x", "XXL", "Xxl"]
-ListVega = ["V", "v", "Vega", "VEGA"]
-ListGewone = ["G", "g", "Gewone", "GEWONE"]
+ListVega = ["V", "v", "Vega", "VEGA", "vega"]
+ListGewone = ["G", "g", "Gewone", "GEWONE", "gewone"]
+ListMet = ["M", "m", "Met", "MET", "met"]
+ListZonder = ["Z", "z", "Zonder", "zonder", "ZONDER"]
 KetchupCounter = 0
 MayoCounter = 0
 
 gewone = 0
 vega = 0
 Xxl = 0
+
+kroketbrood = 0
+kroket = 0
 
 HoeveelPat = int(input("Hoeveel patat? :"))
 if HoeveelPat > 0:
@@ -51,6 +57,18 @@ if HoeveelFri > 0:
 
 
 HoeveelKro = int(input("Hoeveel kroketten? :"))
+if HoeveelKro > 0:
+    for z in range(HoeveelKro):
+        MetBroodje = input("met of zonder broodje? [met] of [zonder] :")
+        if MetBroodje in ListMet:
+            kroketbrood += 1
+        elif MetBroodje in ListZonder:
+            kroket += 1
+        else:
+            print()
+
+
+        
 
 TotaalKet = KetchupCounter * PrijsKetchup
 TotaalMay = MayoCounter * PrijsMayo
@@ -60,7 +78,9 @@ TotaalGew = gewone * PrijsGewone
 TotaalVeg = vega * PrijsVega
 TotaalXXL = Xxl * PrijsXXL
 
-TotaalKro = HoeveelKro * PrijsKroket
+TotaalKro = kroket * PrijsKroket
+TotaalKroBro = kroketbrood * PrijsKroketBrood
+
 TotaleKosten = TotaalPat + TotaalGew + TotaalVeg + TotaalXXL + TotaalKro + TotaalKet + TotaalMay 
 BestelKosten = 1.35
 
@@ -77,8 +97,10 @@ def Bonnetje():
         print(f"XXL Frikandel = {Xxl} x {PrijsXXL} = {TotaalXXL:.2f}")
 
 
-    if HoeveelKro > 0:
-        print(f"Kroket = {HoeveelKro} x {PrijsKroket} = €{TotaalKro:.2f}")
+    if kroket > 0:
+        print(f"Kroket = {kroket} x {PrijsKroket} = €{TotaalKro:.2f}")
+    if kroketbrood > 0:
+        print(f"Kroket Brood = {kroketbrood} x {PrijsKroketBrood:.2f} = €")
 
 
     if KetchupCounter > 0:
