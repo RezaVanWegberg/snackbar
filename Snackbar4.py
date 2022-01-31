@@ -1,3 +1,6 @@
+import random
+from typing import List
+
 PrijsPatat = 2.40
 
 PrijsGewone = 0.95
@@ -32,6 +35,12 @@ Xxl = 0
 kroketbrood = 0
 kroket = 0
 
+ListBitter = ["Bitterbal", "mini Frikandel", "Kipnuggets", "Bamibal", "Mini Kaassoufflé"]
+ListBitterGekregen = []
+
+Bittergarnituur = 0
+BittergarnituurPrijs = 0.60
+
 def VraagSaus():
     global KetchupCounter
     global MayoCounter
@@ -58,18 +67,29 @@ b = True
 
 while a == True:
     b = True
+    VraagSurprise = input("Wilt u een bittergarnituur surprise? [Y] of [N]:")
+    if VraagSurprise in ListY:
+        VraagGrote = input("Welke grootte: [mini], [normal] of [big] :")
+        if VraagGrote == "mini":
+            for x in range(3):
+                Bittergarnituur += 1
+                random.shuffle(ListBitter)
+                ListBitterGekregen.append(ListBitter[1])
+        elif VraagGrote == "normal":
+            for x in range(5):
+                Bittergarnituur += 1
+                random.shuffle(ListBitter)
+                ListBitterGekregen.append(ListBitter[1])
+        elif VraagGrote == "big":
+            for x in range(7):
+                Bittergarnituur += 1
+                random.shuffle(ListBitter)
+                ListBitterGekregen.append(ListBitter[1])
+
     HoeveelPat = int(input("Hoeveel patat? :"))
     patat += HoeveelPat
-    VraagSaus()
-    # if HoeveelPat > 0:
-        # for x in range(HoeveelPat):                                                           dit moest nu in een function door opdracht 4
-        #     WelkeSaus = input("Wat voor saus wil je? [Ketchup] of [Mayo] of [Geen] :")
-        #     if WelkeSaus in Ketchup:
-        #         KetchupCounter += 1
-        #     elif WelkeSaus in Mayo:
-        #         MayoCounter += 1
-        #     else:
-        #         print()
+    if HoeveelPat > 0:
+        VraagSaus()
 
 
     HoeveelFri = int(input("Hoeveel frikandellen? :"))
@@ -111,7 +131,7 @@ while a == True:
             a = False
             b = False
     
-
+TotaalBittergarnituur = Bittergarnituur * BittergarnituurPrijs
         
 
 TotaalKet = KetchupCounter * PrijsKetchup
@@ -145,7 +165,10 @@ def Bonnetje():
     if kroket > 0:
         print(f"Kroket = {kroket} x {PrijsKroket} = €{TotaalKro:.2f}")
     if kroketbrood > 0:
-        print(f"Kroket Brood = {kroketbrood} x {PrijsKroketBrood:.2f} = €")
+        print(f"Kroket Brood = {kroketbrood} x {PrijsKroketBrood:.2f} = €{TotaalKro:.2f}")
+
+    if Bittergarnituur > 0:
+        print(f"Bittergarnituur = {Bittergarnituur} x {BittergarnituurPrijs:.2f} = €{TotaalBittergarnituur:.2f}")
 
 
     if KetchupCounter > 0:
