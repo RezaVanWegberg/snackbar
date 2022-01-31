@@ -11,10 +11,10 @@ PrijsKro = HoeveelKro * 0.85
 
 def Bonnetje():
     if HoeveelPat > 0:
-        print(f"Patat = €{PrijsPat}")
+        print(f"Patat = €{PrijsPat:.2f}")
     if HoeveelFri > 0:
-        print(f"Frikandel = €{PrijsFri}")
+        print(f"Frikandel = €{PrijsFri:.2f}")
     if HoeveelKro > 0:
-        print(f"Kroket = €{PrijsKro}")
+        print(f"Kroket = €{PrijsKro:.2f}")
     
 Bonnetje()
